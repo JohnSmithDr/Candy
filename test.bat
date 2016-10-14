@@ -1,0 +1,1 @@
+dotnet test Candy.Core.Tests
