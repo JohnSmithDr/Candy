@@ -1,6 +1,7 @@
-version: 1.0.{build}
+version: 0.1.{build}
 environment:
-  COVERALLS_REPO_TOKEN: ##
+  COVERALLS_REPO_TOKEN:
+    secure: SKiJlKI40eavVYCKXr7LOg0BmsnXCSQmDBcwaJB9Ps1FjT93pWMDQXRRXYwhzlgB
 build_script:
 - cmd: dotnet restore Candy.Core Candy.Core.Tests
 test_script:
