@@ -1,8 +1,7 @@
 ﻿using System;
-using Candy.System;
 using Xunit;
 
-namespace Tests
+namespace Candy.Tests
 {
     public class ObjectExTests
     {

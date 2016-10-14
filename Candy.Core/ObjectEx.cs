@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Candy.System
+namespace Candy
 {
     public static class ObjectEx
     {
