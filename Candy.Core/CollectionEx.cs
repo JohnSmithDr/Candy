@@ -15,5 +15,16 @@ namespace Candy
             var i = 0;
             foreach (var item in source) handler.Invoke(item, i++);
         }
+
+        public static void ForEach<TKey, TValue>(this IDictionary<TKey, TValue> source, Action<TKey, TValue> handler)
+        {
+            foreach (var item in source) handler.Invoke(item.Key, item.Value);
+        }
+
+        public static void ForEach<TKey, TValue>(this IDictionary<TKey, TValue> source, Action<TKey, TValue, int> handler)
+        {
+            var i = 0;
+            foreach (var item in source) handler.Invoke(item.Key, item.Value, i++);
+        }
     }
 }
