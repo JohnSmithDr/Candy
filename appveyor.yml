@@ -18,10 +18,13 @@ test_script:
     (Get-Content Candy.Core.Tests\project.json)
 
     dotnet restore Candy.Core Candy.Core.Tests
+
     dotnet test Candy.Core.Tests
     
     nuget install OpenCover -OutputDirectory "tools" -ExcludeVersion
+
     nuget install coveralls.io -OutputDirectory "tools" -ExcludeVersion
     
     tools\OpenCover\tools\OpenCover.Console.exe -oldstyle -register:user -target:"%ProgramFiles%\dotnet\dotnet.exe" -targetargs:"test Candy.Core.Tests" -output:coverage.xml -filter:"+[*]Candy.* -[*.Tests]* -[xunit.*]*" -skipautoprops -hideskipped:All
+    
     tools\coveralls.io\tools\coveralls.net.exe --opencover coverage.xml
