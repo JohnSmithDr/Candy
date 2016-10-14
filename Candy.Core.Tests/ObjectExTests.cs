@@ -1,4 +1,5 @@
-﻿using Candy.System;
+﻿using System;
+using Candy.System;
 using Xunit;
 
 namespace Tests
@@ -13,8 +14,33 @@ namespace Tests
             Assert.Null(x.As<IBar>());
         }
 
+        [Fact]
+        public void TestTryDispose()
+        {
+            var x = new Foo();
+            x.TryDispose();
+            Assert.True(x.IsDisposed);
+
+            var y = new Bar();
+            y.TryDispose();
+            Assert.True(true);
+        }
+
         public interface IFoo { }
         public interface IBar { }
-        public class Foo : IFoo { }
+
+        public class Foo : IFoo, IDisposable 
+        {
+            public bool IsDisposed { get; private set; }
+            public void Dispose() => IsDisposed = true;
+        }
+
+        public class Bar : IBar, IDisposable
+        {
+            public void Dispose()
+            {
+                throw new ObjectDisposedException("Bar");
+            } 
+        }
     }
 }
