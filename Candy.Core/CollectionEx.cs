@@ -26,5 +26,15 @@ namespace Candy
             var i = 0;
             foreach (var item in source) handler.Invoke(item.Key, item.Value, i++);
         }
+
+        public static void AddRange<T>(this ICollection<T> source, IEnumerable<T> items)
+        {
+            foreach (var item in items) source.Add(item);
+        }
+
+        public static void AddRange<T>(this ICollection<T> source, params T[] items)
+        {
+            foreach (var item in items) source.Add(item);
+        }
     }
 }

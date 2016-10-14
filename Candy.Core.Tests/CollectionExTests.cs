@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FluentAssertions;
 using Xunit;
 
 namespace Candy.Core.Tests
@@ -33,6 +34,22 @@ namespace Candy.Core.Tests
                 Assert.Equal(key, i);
                 Assert.Equal(key * key, val);
             });
+        }
+
+        [Fact]
+        public void TestAddRangeFromEnumerable()
+        {
+            var col = new LinkedList<int>();
+            col.AddRange(new List<int> { 0, 1, 2, 3, 4, 5 });
+            col.Should().HaveCount(6).And.Equal(0, 1, 2, 3, 4, 5);
+        }
+
+        [Fact]
+        public void TestAddRangeFromParams()
+        {
+            var col = new LinkedList<int>();
+            col.AddRange(0, 1, 2, 3, 4, 5);
+            col.Should().HaveCount(6).And.Equal(0, 1, 2, 3, 4, 5);
         }
     }
 }
