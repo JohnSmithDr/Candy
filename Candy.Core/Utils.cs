@@ -25,7 +25,5 @@ namespace Candy
                 yield return i;
             }
         }
-
-        
     }
 }

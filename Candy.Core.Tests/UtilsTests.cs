@@ -1,10 +1,8 @@
 using System.Linq;
 using Xunit;
 
-namespace Candy.Tests
+namespace Candy.Core.Tests
 {
-    
-
     public class UtilsTest
     {
         [Theory]
