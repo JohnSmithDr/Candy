@@ -1,0 +1,6 @@
+{
+    "projects": [
+        "Candy.Core", 
+        "Candy.Core.Tests"
+    ]
+}
