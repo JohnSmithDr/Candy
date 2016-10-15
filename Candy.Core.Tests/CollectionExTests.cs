@@ -94,5 +94,38 @@ namespace Candy.Core.Tests
             list.Add(1);
             list.IsNullOrEmpty().Should().BeFalse();
         }
+
+        [Fact]
+        public void TestFilter()
+        {
+            var arr = Utils.Range(0, 10);
+            arr.Filter(x => x % 2 == 0).Should().Equal(0, 2, 4, 6, 8);
+            arr.Filter(x => x % 3 == 0).Should().Equal(0, 3, 6, 9);
+
+            var eachIndex = new List<int>();
+            var greaterThenZeror = arr.Filter((x, i) => {
+                i.AddInto(eachIndex);
+                return x > 0;
+            });
+            greaterThenZeror.Should().Equal(1, 2, 3, 4, 5, 6, 7, 8, 9);
+            eachIndex.Should().Equal(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        }
+
+        [Fact]
+        public void TestMap()
+        {
+            var arr = Utils.Range(0, 5);
+            arr.Map(x => x + 1).Should().Equal(1, 2, 3, 4, 5);
+            arr.Map(x => x * x).Should().Equal(0, 1, 4, 9, 16);
+            arr.Map((x, i) => x * i).Should().Equal(0, 1, 4, 9, 16);
+        }
+
+        [Fact]
+        public void TestReduce()
+        {
+            var arr = Utils.Range(1, 5);
+            arr.Reduce((r, x) => r + x).Should().Be(15);
+            arr.Reduce((r, x) => r + x, 5).Should().Be(20);
+        }
     }
 }

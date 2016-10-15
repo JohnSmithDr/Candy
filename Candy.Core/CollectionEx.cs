@@ -54,5 +54,23 @@ namespace Candy
         {
             return source == null || source.Any() == false;
         }
+
+        public static IEnumerable<T> Filter<T>(this IEnumerable<T> source, Func<T, bool> filter) 
+            => source.Where(filter);
+
+        public static IEnumerable<T> Filter<T>(this IEnumerable<T> source, Func<T, int, bool> filter) 
+            => source.Where(filter);
+        
+        public static IEnumerable<TOut> Map<TIn, TOut>(this IEnumerable<TIn> source, Func<TIn, TOut> mapper) 
+            => source.Select(mapper);
+        
+        public static IEnumerable<TOut> Map<TIn, TOut>(this IEnumerable<TIn> source, Func<TIn, int, TOut> mapper) 
+            => source.Select(mapper);
+        
+        public static T Reduce<T>(this IEnumerable<T> source, Func<T, T, T> reducer) 
+            => source.Aggregate(reducer);
+        
+        public static TOut Reduce<T, TOut>(this IEnumerable<T> source, Func<TOut, T, TOut> reducer, TOut init) 
+            => source.Aggregate(init, reducer);
     }
 }
