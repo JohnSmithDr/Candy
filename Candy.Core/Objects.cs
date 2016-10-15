@@ -2,7 +2,7 @@
 
 namespace Candy
 {
-    public static class ObjectEx
+    public static class Objects
     {
         public static T As<T>(this object x) => x is T ? (T)x : default(T);
 

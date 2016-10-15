@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Candy.Core.Tests
 {
-    public class ObjectExTests
+    public class ObjectsTests
     {
         [Fact]
         public void TestAs() 

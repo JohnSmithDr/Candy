@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Candy.Core.Tests
 {
-    public class CollectionExTests
+    public class CollectionsTests
     {
         [Fact]
         public void TestForEachForEnumerable()

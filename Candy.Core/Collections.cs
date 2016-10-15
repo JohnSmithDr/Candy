@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Candy
 {
-    public static class CollectionEx
+    public static class Collections
     {
         public static void ForEach<T>(this IEnumerable<T> source, Action<T> handler)
         {
