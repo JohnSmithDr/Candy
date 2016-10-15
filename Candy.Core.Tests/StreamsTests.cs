@@ -58,12 +58,13 @@ namespace Candy.Core.Tests
             using (var dst = new MemoryStream(data.Length))
             {
                 var piped = 0;
-                await Assert.ThrowsAsync<TaskCanceledException>(async () => {
+                await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => {
                     await src.PipeToAsync(dst, 1024, cts.Token, new Progress<int>(g => {
                         piped += g;
                         if (piped == 10240) cts.Cancel();
                     }));
                 });
+                piped.Should().BeLessThan(data.Length);
             }
         }
     }
