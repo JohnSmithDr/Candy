@@ -36,5 +36,11 @@ namespace Candy
         {
             foreach (var item in items) source.Add(item);
         }
+
+        public static T AddInto<T>(this T source, ICollection<T> collection)
+        {
+            collection.Add(source);
+            return source;
+        }
     }
 }

@@ -51,5 +51,14 @@ namespace Candy.Core.Tests
             col.AddRange(0, 1, 2, 3, 4, 5);
             col.Should().HaveCount(6).And.Equal(0, 1, 2, 3, 4, 5);
         }
+
+        [Fact]
+        public void TestAddInto()
+        {
+            var list = new List<int>();
+            1.AddInto(list);
+            2.AddInto(list);
+            list.Should().HaveCount(2).And.Equal(1, 2);
+        }
     }
 }
