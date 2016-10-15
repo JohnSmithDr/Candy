@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -56,9 +57,26 @@ namespace Candy.Core.Tests
         public void TestAddInto()
         {
             var list = new List<int>();
-            1.AddInto(list);
-            2.AddInto(list);
-            list.Should().HaveCount(2).And.Equal(1, 2);
+            list.Should().HaveCount(0);
+
+            Utils.Range(1, 4).ForEach(x => {
+                x.AddInto(list).Should().Equals(x);
+            });
+
+            list.Should().HaveCount(4).And.Equal(1, 2, 3, 4);
+        }
+
+        [Fact]
+        public void TestRemoveFrom()
+        {
+            var list = Utils.Range(1, 4).ToList();
+            list.Should().HaveCount(4).And.Equal(1, 2, 3, 4);
+
+            Utils.Range(1, 4).ForEach(x => {
+                x.RemoveFrom(list).Should().Equals(x);
+            });
+
+            list.Should().HaveCount(0);
         }
     }
 }

@@ -42,5 +42,11 @@ namespace Candy
             collection.Add(source);
             return source;
         }
+
+        public static T RemoveFrom<T>(this T source, ICollection<T> collection)
+        {
+            collection.Remove(source);
+            return source;
+        }
     }
 }
