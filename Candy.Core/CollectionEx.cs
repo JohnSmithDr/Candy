@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Candy
 {
@@ -47,6 +48,11 @@ namespace Candy
         {
             collection.Remove(source);
             return source;
+        }
+
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        {
+            return source == null || source.Any() == false;
         }
     }
 }
